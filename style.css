@@ -5,41 +5,58 @@
 
 .calc-container {
   margin: 70px auto 0;
-  width: 528px;
-  padding-left: 24px;
-  padding-top: 40px;
-  padding-bottom: 40px;
+  width: 288px;
+  padding-left: 4px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   border: 3px solid #131313;
 }
 
 .calc-container .calc-screen {
-  width: 448px;
-  height: 100px;
+  width: 248px;
+  height: 50px;
   margin: 16px;
-  padding-top: 25px;
-  padding-right: 10px;
+  padding-top: 10px;
+  padding-right: 5px;
+  overflow-x: auto;
+  direction: rtl;
   background-color: #000;
   color: #fff;
-  text-align: end;
-  font-size: 3.5rem;
+  font-size: 1.7rem;
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+.calc-container .calc-screen::-webkit-scrollbar {
+  display: none;
+  /* Safari and Chrome */
 }
 
 .calc-container .calc-btn {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   margin-left: 16px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   background-color: #fff;
-  border: 4px solid #707070;
-}
-
-.calc-container .calc-btn:hover {
-  border-width: 2px;
+  border: 0 solid #707070;
 }
 
 .calc-container .calc-btn:active {
   background-color: #707070;
   color: #fff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .calc-container .calc-btn:last-child:hover {
+    background-color: #ff7a0d;
+  }
+  .calc-container .calc-btn.grey:hover {
+    background-color: #8d8d8d;
+    color: #fff;
+  }
+  .calc-container .calc-btn:hover {
+    border-width: 2px;
+  }
 }
 
 .calc-container .calc-btn:last-child {
@@ -49,12 +66,8 @@
   font-weight: bold;
 }
 
-.calc-container .calc-btn:last-child:hover {
-  background-color: #ff7a0d;
-}
-
 .calc-container .calc-btn:last-child:active {
-  background-color: #fd9d1f;
+  background-color: #ff7a0d;
 }
 
 .calc-container .calc-btn.grey {
@@ -64,21 +77,16 @@
   font-weight: bold;
 }
 
-.calc-container .calc-btn.grey:hover {
-  background-color: #8d8d8d;
-  color: #fff;
-}
-
 .calc-container .calc-btn.grey:active {
-  background-color: #dad8d8;
+  background-color: #8d8d8d;
 }
 
 .calc-container .double {
-  width: 216px;
+  width: 116px;
 }
 
 .calc-container .triple {
-  width: 332px;
+  width: 182px;
 }
 
 .calc-container .calc-row {
