@@ -1,0 +1,108 @@
+//Returns percentage value in horizontal axis
+@function hp($pixels) {
+	$percent: $pixels/1080px * 100%;
+	@return floor($percent);
+}
+
+//Returns percentage value in vertical axis
+@function vp($pixels) {
+	$percent: $pixels/1920px * 100%;
+	@return floor($percent);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.calc-container {
+	//Only change these variables
+	$btn-dim: 100px;
+	$gutter: 16px;
+	$padding: 40px;
+	$screen-color: #000;
+	$calc-border-clr: #131313;
+	$btn-border-clr: #707070;
+	$grey: #dad8d8;
+
+	$screen-size: ($btn-dim * 4) + ($gutter * 3);
+	& {
+		margin: 70px auto 0;
+		width: $screen-size + ($padding * 2);
+		padding-left: $padding - $gutter;
+		padding-top: $padding;
+		padding-bottom: $padding;
+		border: 3px solid $calc-border-clr;
+	}
+
+	.calc-screen {
+		width: $screen-size;
+		height: $btn-dim;
+		margin: $gutter;
+		padding-top: ceil(0.25 * $btn-dim); //#0% of Screen-size
+		padding-right: ceil(0.1 * $btn-dim);
+
+		background-color: $screen-color;
+		color: #fff;
+		text-align: end;
+		font-size: 3.5rem;
+	}
+
+	.calc-btn {
+		width: $btn-dim;
+		height: $btn-dim;
+		margin-left: $gutter;
+		font-size: 2rem;
+		background-color: #fff;
+		border: 4px solid $btn-border-clr;
+
+		&:hover {
+			border-width: 2px;
+		}
+		&:active {
+			background-color: #707070;
+			color: #fff;
+		}
+
+		&:last-child {
+			background-color: #fd9d1f;
+			color: #fff;
+			border: none;
+			font-weight: bold;
+
+			&:hover {
+				background-color: #ff7a0d;
+			}
+
+			&:active {
+				background-color: #fd9d1f;
+			}
+		}
+
+		&.grey {
+			background-color: $grey;
+			border: 1px solid $btn-border-clr;
+			color: $btn-border-clr;
+			font-weight: bold;
+
+			&:hover {
+				background-color: #8d8d8d;
+				color: #fff;
+			}
+
+			&:active {
+				background-color: $grey;
+			}
+		}
+	}
+
+	.double {
+		width: ($btn-dim * 2) + $gutter;
+	}
+	.triple {
+		width: ($btn-dim * 3) + (2 * $gutter);
+	}
+	.calc-row {
+		font-size: 0; //Hack to remove invisible blank spaces bw buttons
+		margin: $gutter 0;
+	}
+}
