@@ -13,10 +13,13 @@
 	document.addEventListener("keydown", (ev) => buttonPress(ev.key), false);
 
 	function buttonPress(value) {
+		// console.log(value);
+
 		if (isNaN(value)) {
 			handleSymbol(value);
 		} else {
-			handleNumber(value);
+			//Space is considered as Number
+			if (value !== " ") handleNumber(value);
 		}
 		reset();
 	}
@@ -33,6 +36,8 @@
 		if (overwrite) {
 			buffer = value;
 			overwrite = false;
+
+			if (value == 0) overwrite = true; //Prevent from Entering 0's when overwrite =>True
 		} else {
 			buffer += value;
 		}
@@ -41,12 +46,14 @@
 	function handleSymbol(value) {
 		switch (value) {
 			case "Clear":
+			case "c":
 				buffer = "0";
 				total = 0;
 				overwrite = true;
 				break;
 
 			case "←":
+			case "Backspace":
 				buffer = buffer.substring(0, buffer.length - 1);
 				if (!buffer) {
 					buffer = "0";
@@ -67,10 +74,11 @@
 
 	function performCalc(value) {
 		if (!overwrite) {
+			let intBuffer = parseInt(buffer, 10);
 			if (preOp) {
-				total = Math.round(eval(total + preOp + buffer));
+				total = Math.round(eval(total + preOp + intBuffer));
 			} else {
-				total = buffer;
+				total = intBuffer;
 			}
 
 			buffer = total;
