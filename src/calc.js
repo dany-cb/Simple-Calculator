@@ -1,13 +1,13 @@
 "use-strict";
 (function Calculator() {
-	let screen = document.querySelector(".calc-screen");
+	let screen = document.querySelector(".calc__screen");
 	let buffer = "0";
 	let total = 0;
 	let preOp = null;
 	let overwrite = true;
 
 	document
-		.querySelectorAll(".calc-btn")
+		.querySelectorAll(".calc__btn")
 		.forEach((btn) => btn.addEventListener("click", (ev) => buttonPress(ev.target.innerText), false));
 
 	document.addEventListener("keydown", (ev) => buttonPress(ev.key), false);
