@@ -20,11 +20,11 @@ body {
 .calc__hero-txt {
   position: absolute;
   z-index: 100;
-  top: 2%;
-  left: 2%;
+  top: 3%;
+  left: 4%;
   margin: 0;
   font-family: Helvetica, sans-serif;
-  font-size: 5.3vh;
+  font-size: 5vh;
   letter-spacing: 0.01em;
   background: -webkit-linear-gradient(45deg, #fcad1a 10%, #646464);
   -webkit-background-clip: text;
