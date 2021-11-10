@@ -1,33 +1,21 @@
-//Returns percentage value in horizontal axis
-@function hp($pixels) {
-	$percent: $pixels/1080px * 100%;
-	@return floor($percent);
-}
-
-//Returns percentage value in vertical axis
-@function vp($pixels) {
-	$percent: $pixels/1920px * 100%;
-	@return floor($percent);
-}
-
-// Use Below box-sizing reset to have more control if necessary
-/*
-html{
-	box-sizing: border-box;
-}
-*, *::after, *::before{
-	box-sizing: inherit;
-}
-*/
-
 *,
 *::after,
 *::before {
 	box-sizing: border-box;
 }
 
+//Remove default margins for section
 body {
 	margin: 0;
+}
+
+.main {
+	height: 100vh;
+	width: 100vw;
+	background: radial-gradient(circle at center, #424242, #000 80%);
+	position: relative;
+	//Prevents the margin of inner div from pushing the section
+	overflow: hidden;
 }
 
 .calc {
@@ -36,7 +24,6 @@ body {
 	$padding: 20px;
 	$screen-color: rgba(0, 0, 0, 0.452);
 	$btn-border-clr: #707070;
-	$grey: #dad8d8;
 	$txt-color: #cccccc;
 
 	&__hero-txt {
@@ -46,10 +33,11 @@ body {
 		top: 3%;
 		left: 4%;
 		margin: 0;
-
+		
 		font-family: Helvetica, sans-serif;
 		font-size: 5vh;
 		letter-spacing: 0.01em;
+		//Create gradient overlay on top of text
 		background: -webkit-linear-gradient(45deg, #fcad1a 10%, rgb(100, 100, 100));
 		-webkit-background-clip: text;
 		-webkit-text-fill-color: transparent;
@@ -61,12 +49,10 @@ body {
 		left: 50%;
 		transform: translate(-50%, -50%);
 		padding: 2%;
-		background-color: rgba(73, 73, 73, 0.493);
 		z-index: 100;
-
+		background-color: rgba(73, 73, 73, 0.493);
 		border: 1px solid #b9b9b942;
 		border-radius: 10px;
-		// width: auto;
 
 		@media (max-width: 650px) {
 			padding: 4%;
@@ -77,7 +63,6 @@ body {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
 		grid-template-rows: repeat(5, 1fr);
-		// justify-items: center;
 		width: min-content;
 		row-gap: $gutter;
 		column-gap: $gutter;
@@ -90,7 +75,7 @@ body {
 				font-size: 1.5em;
 				background-color: transparent;
 				color: $txt-color;
-				border: 0 solid $btn-border-clr;
+				border: 0 solid #707070;
 				border-radius: 50%;
 
 				@media (hover: hover) {
@@ -104,7 +89,6 @@ body {
 					width: 100%;
 					grid-area: 1 / 1 / span 1 / span 2;
 					border-radius: 20px;
-					// text-align: end;
 				}
 
 				&:active {
@@ -136,6 +120,7 @@ body {
 								background-color: transparent;
 							}
 						}
+
 						&:active {
 							background-color: #2199ff;
 							border-radius: 10px;
@@ -156,10 +141,17 @@ body {
 	}
 
 	&__screen {
+		position: absolute;
+		top: ceil(0.2 * $btn-dim); //20% of Button-size/Screensize
+		right: 10px;
+		width: 100%;
+		color: $txt-color;
+		font-size: 1.6rem;
+		direction: rtl;
+
 		&--wrap {
 			position: relative;
 			overflow: auto;
-
 			width: 100%;
 			height: $btn-dim;
 			margin: auto;
@@ -167,33 +159,13 @@ body {
 			background-color: $screen-color;
 			border-radius: 5px;
 
+			//Hides the scrollbar in case of text overflow
 			scrollbar-width: none; /* Firefox */
 			&::-webkit-scrollbar {
 				display: none; /* Safari and Chrome */
 			}
 		}
-
-		position: absolute;
-		top: ceil(0.2 * $btn-dim); //20% of Button-size/Screensize
-		right: 10px;
-		width: 100%;
-
-		direction: rtl;
-
-		color: $txt-color;
-		// text-align: end;
-		font-size: 1.6rem;
-
-		//Hide scroll-bar
 	}
-}
-
-.main {
-	height: 100vh;
-	width: 100vw;
-	position: relative;
-	overflow: hidden;
-	background: radial-gradient(circle at center, #424242, #000 80%);
 }
 
 .bg {
@@ -201,18 +173,14 @@ body {
 		position: absolute;
 		top: 0;
 		left: 0;
-		// min-height: 100px;
 		height: 20%;
 		width: auto;
 		z-index: 0;
-		// max-width: 50%;
-		// min-width: 350px;
 	}
 
 	&__circle {
 		position: absolute;
 		filter: blur(7px);
-		// z-index: 1;
 
 		&--top {
 			top: 0;
